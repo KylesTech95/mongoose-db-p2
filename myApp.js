@@ -28,8 +28,18 @@ const createAndSavePerson = (done) => {
   })
 };
 
-const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+// create an array of people that confirm the types from Person Model
+const arrayOfPeople = [
+  {name: "Kyle Zu",age: 22,favoriteFoods:["hamburger","salad"]},
+  {name: "Sally Ho",age: 30,favoriteFoods:["salmon","watermelon","chicken"]},
+  {name: "Mike Gains",age: 42,favoriteFoods:["duck","ham","spinach"]}
+]
+
+// create many people
+const createManyPeople = (arrayOfPeople,done) => {
+  Person.create(arrayOfPeople,(err,initiateCreation)=>{
+    return err ? console.log(err) : done(null,initiateCreation)
+  })
 };
 
 const findPeopleByName = (personName, done) => {
